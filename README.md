@@ -1,89 +1,71 @@
-# Week5 Autograde Starter (Number Guessing Game)
+# 第5回：繰り返し（for / while）とイテレーション
 
-## 使い方（学生）
-
-1. このリポジトリを Clone  
-2. `assignment3_number_game.py` を編集（TODO を埋める）  
-3. 保存して Commit → Push  
-4. 数十秒後、GitHub の Actions（Auto-grading）が実行され、テスト結果が反映されます  
-
----
-
-### テストファイルについて
-
-- `test/` フォルダ：授業中に使う確認用スクリプトです（学生が編集可）  
-- `autograde_tests/` フォルダ：自動採点（pytest）用です。内容を変更する必要はありません。  
+## 🎯 学習目標
+- for文 / while文 の使い方を理解する
+- break / continue の制御方法を学ぶ
+- 合計・個数・最大値などの基本アルゴリズムを実装できる
+- ネスト構造（入れ子ループ）を理解する
+- グループでの例題演習を通して協働的に学ぶ
 
 ---
 
-## 採点（可視テスト）
+## 🧭 実習ファイル構成
+
+| ファイル | 内容 |
+|-----------|------|
+| `loop_practice.py` | 授業中のfor/while実習テンプレート |
+| `assignment3_number_game.py` | 課題#3（数当てゲーム）テンプレート |
+| `examples/kukei_table_example.py` | 九九表の例 |
+| `examples/prime_check_example.py` | 素数判定の例 |
+| `examples/digit_sum_example.py` | 桁和の例 |
+
+---
+
+## 🧩 グループワークの進め方
+1. チーム内で役割分担（Driver / Explainer / Reviewer / Timekeeper）を決める  
+2. 各例題（九九表・素数判定・桁和）をグループで実装  
+3. 理解が進んでいる学生は、他メンバーをサポート  
+4. 完成したコードを共有し、説明できるようにする  
+
+---
+
+## 🧮 課題#3：数当てゲーム（自動採点対応版）
+
+### 🎯 要件
+- 1〜100 の乱数を生成
+- 最大 7 回まで挑戦可能
+- 「もっと大きい」「もっと小さい」のヒントを表示
+- 正解なら「正解！」、失敗なら正答を表示
+- 整数以外が入力された場合は再入力を促す（例：「整数を入力してください」）
+
+---
+
+### ⚙️ 自動採点（可視テスト）
 
 - 採点対象：`autograde_tests/test_number_game_autograde.py`
-- 判定条件：
-  - 1〜100 の乱数を生成
-  - 最大 7 回まで挑戦可
-  - 「もっと大きい」「もっと小さい」のヒントを表示
-  - 「正解！」および「残念！正解は X でした。」のメッセージ
-  - 整数以外を入力した場合、再入力を促すメッセージ（例：「整数を入力してください」）
+- 採点条件：
+  - 1〜100 の乱数を生成できる
+  - 最大7回で終了
+  - 「もっと大きい」「もっと小さい」のヒントが出る
+  - 「正解！」および「残念！正解は X でした。」のメッセージが表示される
+  - 整数以外の入力を再入力で処理できる
+
+> GitHub Classroom の Actions（pytest）により自動採点されます。
 
 ---
 
-## ローカル確認
+### 🧩 テストフォルダの構成
 
-```bash
-pip install -r requirements.txt
-pytest -q autograde_tests
-```
-
----
-
-## 注意
-
-- テストをパスするため、出力メッセージに **以下のキーワードを含めてください：**  
-  「正解」「もっと大きい」「もっと小さい」「残念」「整数」など  
-- メッセージ末尾の句読点や全角／半角は厳密に一致しなくても合格します（ゆるいマッチングです）
+| フォルダ | 内容 |
+|-----------|------|
+| `test/` | 授業中に使う確認用スクリプト（学生が編集可） |
+| `autograde_tests/` | 自動採点用（変更不要・Classroom が実行） |
 
 ---
 
-## 課題#3（数当てゲーム）と自動採点について
-
-- **編集するファイル**：`assignment3_number_game.py`  
-- **要件**：
-  - 1〜100 の乱数を生成
-  - 最大 7 回まで挑戦
-  - 「もっと大きい」「もっと小さい」のヒント表示
-  - 「正解！」で終了、失敗時は正答を表示
-  - 整数以外は再入力を促す  
-- **自動採点テスト**：`autograde_tests/test_number_game_autograde.py`（pytest）
-
----
-
-### 重要: solution ファイルの扱い
-
-- 以前公開していた `number_game.py` は **模範解答（`solutions/number_game_solution.py`）** に移動しました。  
-- `solutions/` は `.gitignore` により **Push対象外** です。  
-- 課題は **`assignment3_number_game.py`** を編集して提出してください。
-
----
-
-### ローカル実行・テスト
+### 🧪 ローカル確認方法
 
 ```bash
 python assignment3_number_game.py
 pip install -r requirements.txt
 pytest -q autograde_tests
-```
-
----
-
-### Classroom の自動採点（参考）
-
-**Setup command**
-```bash
-python -m pip install -r requirements.txt
-```
-
-**Test command**
-```bash
-pytest -q autograde_tests
-```
