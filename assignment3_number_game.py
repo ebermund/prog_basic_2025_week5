@@ -17,9 +17,29 @@ def main():
 
     while tries < max_tries:
         s = input("予想した数: ")
-        # TODO: ここで s を整数に変換し、失敗時はメッセージを出して再入力させる
+        while True:
+            try:
+                s = int(s)
+                break
+            except ValueError:
+                print("整数を入力してください。")
+                s = input("予想した数: ")
+                
+        guess = s
 
-        # TODO: 入力値と answer を比較し、ヒント or 正解メッセージを表示
+        if guess == answer:
+            print("正解！")
+            return
+        elif guess < answer:
+            print("もっと大きいです。")
+        else:
+            print("もっと小さいです。")
+
+        tries += 1
+            
+    print(f"残念！正解は{answer}でした。")
+    
+# TODO: 入力値と answer を比較し、ヒント or 正解メッセージを表示
         # guess < answer → 「もっと大きいです。」
         # guess > answer → 「もっと小さいです。」
         # guess == answer → 正解（回数も表示して終了）
@@ -29,5 +49,5 @@ def main():
     # TODO: 7回以内に当てられなかった場合の敗北メッセージ
     # 例：「残念！正解は X でした。」
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     main()
